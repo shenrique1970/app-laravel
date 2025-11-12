@@ -57,7 +57,6 @@ Instale as dependências do projeto
 composer install
 ```
 
-
 Gere a key do projeto Laravel
 ```sh
 php artisan key:generate
@@ -68,11 +67,14 @@ Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
 
 
-
+Criar controller dentro do container
+```sh
+php artisan make:controller "Admin\\SupportController"
+```
 
 fonte:
 https://github.com/especializati/setup-docker-laravel/tree/laravel-10-com-php-8.1
 https://www.youtube.com/watch?v=oz9K3jtFUvI&list=PLVSNL1PHDWvQ1N6fqhQ5HQzFtN-xrkjNU&index=4
 
 
-php artisan make:controller "Admin\\SupportController"
+
