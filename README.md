@@ -77,4 +77,11 @@ https://github.com/especializati/setup-docker-laravel/tree/laravel-10-com-php-8.
 https://www.youtube.com/watch?v=oz9K3jtFUvI&list=PLVSNL1PHDWvQ1N6fqhQ5HQzFtN-xrkjNU&index=4
 
 
-
+stop containers
+```
+docker stop $(docker ps -q)
+```
+Criar model com migrations
+```
+php artisan make:model Support -m
+```
