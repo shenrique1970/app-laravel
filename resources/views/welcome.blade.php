@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app.main')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <h1>Olá, laravel 10</h1>
-        </div>
-    </body>
-</html>
+@section('content')
+    <h1>Pagina inicial</h1>
+    
+        <main>
+            <img src="img/capa.jpg" alt="">
+            <span>
+            <a href="https://br.freepik.com/vetores-gratis/conceito-de-pessoas-de-ti-isometrico_6168526.htm#fromView=search&page=2&position=36&uuid=0e43ad69-f6e9-4830-a22a-b4f2c4eea4e6&query=Suporte+de+informatica">Imagem de macrovector no Freepik</a>
+            </span>
+        </main>
+        <footer>
+            <!-- Evite lógica JavaScript inline com PHP no Blade -->
+            <p>&copy; {{ date('Y') }} All Rights Reserved SHVR Suporte.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    @endsection

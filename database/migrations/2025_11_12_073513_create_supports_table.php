@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('supports', function (Blueprint $table) {
             $table->id();
-            $table->string('assunto');
-            $table->enum('status', ['a','p','c']);
+            $table->string('assunto', 150);
+            $table->enum('status', ['a', 'p', 'c'])->comment('a=aberto, p=pendente, c=concluído');
             $table->text('conteudo');
             $table->timestamps();
         });

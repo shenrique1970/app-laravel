@@ -85,3 +85,8 @@ Criar model com migrations
 ```
 php artisan make:model Support -m
 ```
+
+mysql -h 127.0.0.1 -P 3388 -u root -puserpass laravel
+Command 'mysql' not found, but can be installed with:
+sudo apt install mysql-client-core-8.0     # version 8.0.43-0ubuntu0.22.04.2, or
+sudo apt install mariadb-client-core-10.6  # version 1:10.6.22-0ubuntu0.22.04.1

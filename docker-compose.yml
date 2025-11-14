@@ -1,7 +1,4 @@
-version: "3.7"
-
 services:
-    # image project
     app:
         build:
             context: .
@@ -11,11 +8,13 @@ services:
         volumes:
             - ./:/var/www
         depends_on:
-            - redis
+            db:
+                condition: service_healthy   # espera o MySQL ficar healthy
+            redis:
+                condition: service_started   # apenas espera o Redis iniciar
         networks:
             - laravel
 
-    # nginx
     nginx:
         image: nginx:alpine
         restart: unless-stopped
@@ -27,7 +26,6 @@ services:
         networks:
             - laravel
 
-    # db mysql
     db:
         image: mysql:5.7.22
         restart: unless-stopped
@@ -42,8 +40,12 @@ services:
             - "3388:3306"
         networks:
             - laravel
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-uroot", "-proot"]
+            interval: 30s
+            timeout: 10s
+            retries: 5
 
-    # redis
     redis:
         image: redis:latest
         networks:
