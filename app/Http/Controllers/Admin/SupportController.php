@@ -11,12 +11,14 @@ class SupportController extends Controller
     public function index()
     {
         $supports = Support::all();
+        // resources/views/admin/supports/index.blade.php
         return view('admin.supports.index', compact('supports'));
     }
 
     public function create()
     {
-        return view('admin.supports.create');
+        // resources/views/admin/supports/create.blade.php
+        return view('admin.supports.create',  compact('supports'));
     }
 
     public function store(Request $request)
