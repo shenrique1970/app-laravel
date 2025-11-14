@@ -10,7 +10,7 @@ class SupportController extends Controller
 {
     public function index()
     {
-        $supports = Support::all();
+        $supports = Support::paginate(10);
         // resources/views/admin/supports/index.blade.php
         return view('admin.supports.index', compact('supports'));
     }
@@ -18,7 +18,7 @@ class SupportController extends Controller
     public function create()
     {
         // resources/views/admin/supports/create.blade.php
-        return view('admin.supports.create',  compact('supports'));
+        return view('admin.supports.create');
     }
 
     public function store(Request $request)
@@ -36,14 +36,14 @@ class SupportController extends Controller
 
     public function show(string $id)
     {
-        $support = Support::findOrFail($id);
-        return view('admin.supports.show', compact('support'));
+        $supports = Support::findOrFail($id);
+        return view('admin.supports.show', compact('supports'));
     }
 
     public function edit(string $id)
     {
-        $support = Support::findOrFail($id);
-        return view('admin.supports.edit', compact('support'));
+        $supports = Support::findOrFail($id);
+        return view('admin.supports.edit', compact('supports'));
     }
 
     public function update(Request $request, string $id)

@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="mb-4">Lista de Suportes</h1>
 
-    @if(session('success'))
+    @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
@@ -27,7 +27,7 @@
                     <td>{{ $support->id }}</td>
                     <td>{{ $support->assunto }}</td>
                     <td>
-                        @if($support->status === 'a')
+                        @if ($support->status === 'a')
                             <span class="badge bg-success">Aberto</span>
                         @elseif($support->status === 'p')
                             <span class="badge bg-warning text-dark">Pendente</span>
@@ -42,7 +42,8 @@
                         <form action="{{ route('supports.destroy', $support->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Excluir</button>
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Tem certeza?')">Excluir</button>
                         </form>
                     </td>
                 </tr>
