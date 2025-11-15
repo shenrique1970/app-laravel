@@ -36,6 +36,12 @@ class SupportController extends Controller
 
     public function show(string $id)
     {
+        // Support::find($id);
+        // Support::where('id', $id)-first();
+        // Support::where('id', '=', $id)-first();
+        // if (!$support = Support::find($id)) {
+        //    return back();
+        // }
         $supports = Support::findOrFail($id);
         return view('admin.supports.show', compact('supports'));
     }
