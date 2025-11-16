@@ -1,9 +1,12 @@
 @extends('layouts.app.main')
 
+@section('titulo', 'Editar')
+
 @section('content')
     <div class="container mt-4">
-        <h1>Editar support</h1>
-
+        <div class="d-flex p-2 bg-light">
+            <h1>Editar support</h1>
+        </div>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Erro!</strong> Verifique os campos abaixo:
@@ -14,11 +17,9 @@
                 </ul>
             </div>
         @endif
-
         <form action="{{ route('supports.update', $supports->id) }}" method="POST">
             @csrf
             @method('PUT')
-
             <div class="mb-3">
                 <label for="assunto" class="form-label">Assunto</label>
                 <input type="text" name="assunto" id="assunto" class="form-control"

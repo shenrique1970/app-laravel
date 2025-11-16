@@ -10,7 +10,7 @@ class SupportController extends Controller
 {
     public function index()
     {
-        $supports = Support::paginate(10);
+        $supports = Support::paginate(7);
         // resources/views/admin/supports/index.blade.php
         return view('admin.supports.index', compact('supports'));
     }
