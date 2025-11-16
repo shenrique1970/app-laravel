@@ -4,70 +4,61 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
-use App\Models\Support;
-use Illuminate\Http\Request;
+use App\Services\SupportService;
 
 class SupportController extends Controller
 {
+    public function __construct(
+        protected SupportService $service
+    ) {}
+
     public function index()
     {
-        $supports = Support::paginate(7);
-        // resources/views/admin/supports/index.blade.php
+        $supports = $this->service->paginate(7);
         return view('admin.supports.index', compact('supports'));
     }
 
     public function create()
     {
-        // resources/views/admin/supports/create.blade.php
         return view('admin.supports.create');
     }
 
-    public function store(StoreUpdateSupport $request, Support $support)
+    public function store(StoreUpdateSupport $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['status'] = 'a';
-        $support->create($data);
 
-        return redirect()->route('supports.index')->with('success', 'Mensagem criada com sucesso!');
+        $this->service->create($data);
+
+        return redirect()->route('supports.index')
+            ->with('success', 'Mensagem criada com sucesso!');
     }
 
     public function show(string $id)
     {
-        // Support::find($id);
-        // Support::where('id', $id)-first();
-        // Support::where('id', '=', $id)-first();
-        // if (!$support = Support::find($id)) {
-        //    return back();
-        // }
-        $supports = Support::findOrFail($id);
-        return view('admin.supports.show', compact('supports'));
+        $support = $this->service->find($id);
+        return view('admin.supports.show', compact('support'));
     }
 
     public function edit(string $id)
     {
-        $supports = Support::findOrFail($id);
-        return view('admin.supports.edit', compact('supports'));
+        $support = $this->service->find($id);
+        return view('admin.supports.edit', compact('support'));
     }
 
     public function update(StoreUpdateSupport $request, string $id)
     {
-        $request->validate([
-            'assunto' => 'required|string|max:255',
-            'status' => 'required|in:a,p,c',
-            'conteudo' => 'required|string',
-        ]);
+        $this->service->update($id, $request->validated());
 
-        $support = Support::findOrFail($id);
-        $support->update($request->only(['assunto', 'status', 'conteudo']));
-
-        return redirect()->route('supports.index')->with('success', 'Mensagem atualizada com sucesso!');
+        return redirect()->route('supports.index')
+            ->with('success', 'Mensagem atualizada com sucesso!');
     }
 
     public function destroy(string $id)
     {
-        $support = Support::findOrFail($id);
-        $support->delete();
+        $this->service->delete($id);
 
-        return redirect()->route('supports.index')->with('success', 'Excluída com sucesso!');
+        return redirect()->route('supports.index')
+            ->with('success', 'Excluída com sucesso!');
     }
 }

@@ -19,13 +19,13 @@
             </div>
         @endif
         
-        <form action="{{ route('supports.update', $supports->id) }}" method="POST">
+        <form action="{{ route('supports.update', $support->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="assunto" class="form-label">Assunto</label>
                 <input type="text" name="assunto" id="assunto" class="form-control"
-                    value="{{ old('assunto', $supports->assunto) }}" required>
+                    value="{{ old('assunto', $support->assunto) }}" required>
             </div>
 
             <div class="mb-3">
@@ -40,7 +40,7 @@
             <div class="mb-3">
                 <label for="conteudo" class="form-label">Conteúdo</label>
                 <input type="text" name="conteudo" id="conteudo" class="form-control"
-                    value="{{ old('conteudo', $supports->conteudo) }}">
+                    value="{{ old('conteudo', $support->conteudo) }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Atualizar</button>
