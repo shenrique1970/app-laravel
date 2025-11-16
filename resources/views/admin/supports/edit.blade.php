@@ -7,6 +7,7 @@
         <div class="d-flex p-2 bg-light">
             <h1>Editar support</h1>
         </div>
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Erro!</strong> Verifique os campos abaixo:
@@ -17,6 +18,7 @@
                 </ul>
             </div>
         @endif
+        
         <form action="{{ route('supports.update', $supports->id) }}" method="POST">
             @csrf
             @method('PUT')

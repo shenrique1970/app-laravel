@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-secondary bg-gradient text-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="/images/logo.png" alt="Logo SHVR" title="Página inicial">
@@ -39,7 +39,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="fixed-bottom bg-light text-center py-2">
+    <footer class="fixed-bottom bg-secondary bg-gradient text-white text-center py-2">
         <p>&copy; {{ date('Y') }} All Rights Reserved SHVR Suporte.</p>
     </footer>
 

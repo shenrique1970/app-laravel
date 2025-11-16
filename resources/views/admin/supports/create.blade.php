@@ -4,15 +4,29 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="d-flex p-2 bg-light"><h1>Criar novo suporte</h1></div>
+        <div class="d-flex p-2 bg-light">
+            <h1>Criar novo suporte</h1>
+        </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Erro!</strong> Verifique os campos abaixo:
+                <ul>
+                    @foreach ($errors->all() as $erro)
+                        <li>{{ $erro }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('supports.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
                 <label for="assunto" class="form-label">Assunto:</label>
-                <input type="text" name="assunto" id="assunto" 
-                    class="form-control @error('assunto') is-invalid @enderror"
-                    value="{{ old('assunto') }}">
+                <input type="text" name="assunto" id="assunto"
+                       class="form-control @error('assunto') is-invalid @enderror"
+                       value="{{ old('assunto') }}">
                 @error('assunto')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -29,8 +43,8 @@
 
             <div class="mb-3">
                 <label for="conteudo" class="form-label">Conteúdo:</label>
-                <textarea name="conteudo" id="conteudo" 
-                        class="form-control @error('conteudo') is-invalid @enderror">{{ old('conteudo') }}</textarea>
+                <textarea name="conteudo" id="conteudo"
+                          class="form-control @error('conteudo') is-invalid @enderror">{{ old('conteudo') }}</textarea>
                 @error('conteudo')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

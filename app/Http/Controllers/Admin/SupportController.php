@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
 use Illuminate\Http\Request;
 
@@ -21,15 +22,11 @@ class SupportController extends Controller
         return view('admin.supports.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateSupport $request, Support $support)
     {
-        $request->validate([
-            'assunto' => 'required|string|max:255',
-            'status' => 'required|in:a,p,c',
-            'conteudo' => 'required|string',
-        ]);
-
-        Support::create($request->only(['assunto', 'status', 'conteudo']));
+        $data = $request->all();
+        $data['status'] = 'a';
+        $support->create($data);
 
         return redirect()->route('supports.index')->with('success', 'Mensagem criada com sucesso!');
     }
@@ -52,7 +49,7 @@ class SupportController extends Controller
         return view('admin.supports.edit', compact('supports'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(StoreUpdateSupport $request, string $id)
     {
         $request->validate([
             'assunto' => 'required|string|max:255',
