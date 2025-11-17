@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Fonts -->
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS (apenas uma versão) -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ asset('css/estilo.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
     <title>@yield('titulo')</title>
 </head>
-<body class="container-fluid">
+<body class="d-flex flex-column min-vh-100">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-secondary bg-gradient text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary bg-gradient">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="/images/logo.png" alt="Logo SHVR" title="Página inicial">
+                <img src="/images/logo.png" alt="Logo SHVR" title="Página inicial" class="img-fluid">
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -25,7 +26,6 @@
                     <a class="nav-link" href="/contato">Contatos</a>
                 </li>
             </ul>
-            <!-- Search form -->
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" />
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -34,23 +34,17 @@
     </nav>
 
     <!-- Conteúdo principal -->
-    <main class="container-sm my-5">
+    <main class="container-sm my-5 flex-grow-1">
         @yield('content')
-        <section>
-            @yield('section')
-            <article>
-                @yield('article')
-            </article>
-        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="fixed-bottom bg-secondary bg-gradient text-white text-center py-2">
+    <footer class="bg-secondary bg-gradient text-white text-center py-2 mt-auto">
         @yield('footer')
         <p>&copy; {{ date('Y') }} All Rights Reserved SHVR Suporte.</p>
     </footer>
 
-    <!-- Bootstrap JS (apenas uma versão) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
