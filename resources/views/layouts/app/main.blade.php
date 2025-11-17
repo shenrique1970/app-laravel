@@ -10,7 +10,7 @@
     {{-- <link href="{{ asset('css/estilo.css') }}" rel="stylesheet"> --}}
     <title>@yield('titulo')</title>
 </head>
-<body>
+<body class="container-fluid">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-secondary bg-gradient text-white">
         <div class="container-fluid">
@@ -34,12 +34,19 @@
     </nav>
 
     <!-- Conteúdo principal -->
-    <div class="container my-5">
+    <main class="container-sm my-5">
         @yield('content')
-    </div>
+        <section>
+            @yield('section')
+            <article>
+                @yield('article')
+            </article>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="fixed-bottom bg-secondary bg-gradient text-white text-center py-2">
+        @yield('footer')
         <p>&copy; {{ date('Y') }} All Rights Reserved SHVR Suporte.</p>
     </footer>
 
