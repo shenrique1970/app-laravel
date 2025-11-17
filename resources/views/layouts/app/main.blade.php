@@ -7,7 +7,7 @@
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <!-- Bootstrap CSS (apenas uma versão) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/estilo.css') }}" rel="stylesheet"> --}}
     <title>@yield('titulo')</title>
 </head>
 <body>
