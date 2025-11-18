@@ -1,6 +1,7 @@
-
+<img width="1365" height="634" alt="Captura de tela 2025-11-18 164701" src="https://github.com/user-attachments/assets/b548246e-40ca-440b-8582-fbc2337ae528" />
 # Setup Docker Laravel 10 com PHP 8.1
 [Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+
 
 ### Passo a passo
 Clone Repositório
